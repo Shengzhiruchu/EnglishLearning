@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+work/
+.DS_Store
+.env
+*.pem
+*.key
