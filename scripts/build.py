@@ -24,7 +24,7 @@ def load_posts(config):
     slugs = set()
     for path in (ROOT / "content" / "posts").glob("*.json"):
         post = json.loads(path.read_text(encoding="utf-8"))
-        for field in ("slug", "title", "date", "category", "summary", "reading_minutes", "draft"):
+        for field in ("slug", "title", "date", "summary", "reading_minutes", "draft"):
             if field not in post:
                 raise ValueError(f"{path.name}: missing {field}")
         slug = post["slug"]
@@ -34,8 +34,6 @@ def load_posts(config):
             raise ValueError(f"Duplicate slug: {slug}")
         slugs.add(slug)
         date.fromisoformat(post["date"])
-        if post["category"] not in config["categories"]:
-            raise ValueError(f"{path.name}: unknown category")
         if type(post["draft"]) is not bool or type(post.get("example", False)) is not bool:
             raise ValueError(f"{path.name}: draft and example must be booleans")
         if type(post["reading_minutes"]) is not int or post["reading_minutes"] < 1:
@@ -50,13 +48,11 @@ def load_posts(config):
 
 
 def card(post):
-    styles = {"阅读理解": ("reading", "Read", "BETWEEN THE LINES"), "写作表达": ("writing", "Express", "MAKE YOURSELF UNDERSTOOD"), "学习方法": ("method", "Grow", "A LITTLE EVERY DAY")}
-    style, word, caption = styles.get(post["category"], ("method", "Learn", "LEARNING NOTES"))
     sample = '<span class="sample-badge">示例</span>' if post.get("example") else ""
-    searchable = escape(post["title"] + " " + post["summary"] + " " + post["category"])
-    return f'''<article class="article-card" data-category="{escape(post['category'])}" data-search="{searchable}">
-<div class="card-art art-{style}" aria-hidden="true"><span class="art-word">{word}<span>.</span></span><span class="art-caption">{caption}</span></div>
-<div class="card-body"><div class="card-meta"><span class="card-category">{escape(post['category'])}{sample}</span><time datetime="{post['date']}">{post['date'].replace('-', '.')}</time></div>
+    searchable = escape(post["title"] + " " + post["summary"])
+    return f'''<article class="article-card" data-search="{searchable}">
+<div class="card-art art-reading" aria-hidden="true"><span class="art-word">Read<span>.</span></span><span class="art-caption">BETWEEN THE LINES</span></div>
+<div class="card-body"><div class="card-meta"><span class="card-label">学习札记{sample}</span><time datetime="{post['date']}">{post['date'].replace('-', '.')}</time></div>
 <h3><a href="posts/{post['slug']}/">{escape(post['title'])}</a></h3><p>{escape(post['summary'])}</p><div class="card-footer"><span>{post['reading_minutes']} 分钟阅读</span><span aria-hidden="true">↗</span></div></div></article>'''
 
 
@@ -64,9 +60,25 @@ def layout(config, body, prefix, title, description, home=False):
     return render("layout.html", body=body, prefix=prefix, title=escape(config["title"]), english_title=escape(config["english_title"]), page_title=escape(title), description=escape(description), home_current='aria-current="page"' if home else "")
 
 
+def word_card():
+    words = json.loads((ROOT / "content" / "words.json").read_text(encoding="utf-8"))["cards"]
+    if not words:
+        raise ValueError("At least one word card is required")
+    fields = ("word", "phonetic", "meaning", "line_one", "line_two", "highlight", "caption", "theme")
+    for word in words:
+        for field in fields:
+            if not isinstance(word.get(field), str) or not word[field].strip():
+                raise ValueError(f"Word card missing {field}")
+        if word["theme"] not in ("sage", "gold", "blue", "rose", "olive", "lavender"):
+            raise ValueError("Unknown word card theme")
+    payload = json.dumps(words, ensure_ascii=False).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    return render("word-card.html", **{field: escape(words[0][field]) for field in fields}, word_count=f"{len(words):02}", word_data=payload)
+
+
 def build():
     config = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))
     posts = load_posts(config)
+    words = word_card()
     # Never recursively remove a path other than this repository's generated docs directory.
     if OUTPUT.is_symlink() or OUTPUT.resolve() != ROOT / "docs" or OUTPUT.resolve().parent != ROOT:
         raise ValueError("Unsafe output directory")
@@ -75,14 +87,13 @@ def build():
     OUTPUT.mkdir()
     shutil.copytree(ROOT / "assets", OUTPUT / "assets")
     (OUTPUT / ".nojekyll").touch()
-    filters = "".join(f'<button class="filter" type="button" data-category="{escape(c)}" aria-pressed="false">{escape(c)}</button>' for c in config["categories"])
     notice = "标注“示例”的札记用于展示内容与排版，后续可替换为正式文章。" if any(p.get("example") for p in posts) else ""
-    body = render("home.html", description=escape(config["description"]), post_count=len(posts), filters=filters, cards="\n".join(card(p) for p in posts), sample_notice=notice)
+    body = render("home.html", description=escape(config["description"]), post_count=len(posts), word_card=words, cards="\n".join(card(p) for p in posts), sample_notice=notice)
     (OUTPUT / "index.html").write_text(layout(config, body, ".", config["title"] + " · " + config["english_title"], config["description"], True), encoding="utf-8", newline="\n")
     for post in posts:
         destination = OUTPUT / "posts" / post["slug"]
         destination.mkdir(parents=True)
-        body = render("article.html", prefix="../..", category=escape(post["category"]), date_display=post["date"].replace("-", "."), sample_label="· 示例札记" if post.get("example") else "", post_title=escape(post["title"]), summary=escape(post["summary"]), reading_minutes=post["reading_minutes"], content=post["content"])
+        body = render("article.html", prefix="../..", date_display=post["date"].replace("-", "."), sample_label="· 示例札记" if post.get("example") else "", post_title=escape(post["title"]), summary=escape(post["summary"]), reading_minutes=post["reading_minutes"], content=post["content"])
         (destination / "index.html").write_text(layout(config, body, "../..", post["title"] + " · " + config["title"], post["summary"]), encoding="utf-8", newline="\n")
     print(f"Built {len(posts)} posts into {OUTPUT}")
 

@@ -1,6 +1,6 @@
 # English Learning · 英语学习札记
 
-一个面向中国学生的静态英语学习博客。中文为主，穿插英文；不展示个人身份资料。首页有栏目筛选、标题与摘要搜索、手机适配。三篇初始文章明确标为示例，可替换为正式内容。
+一个面向中国学生的静态英语学习博客。中文为主，穿插英文；不展示个人身份资料。首页统一显示“全部札记”，支持标题与摘要搜索、手机适配，还有可点击翻页的单词卡。初始保留一篇阅读示例，可替换为正式内容。
 
 ## 首次启用 GitHub Pages
 
@@ -15,10 +15,11 @@ GitHub Free 需要公开仓库才能启用 Pages。这里只发布 `docs/`，文
 ## 目录
 
 ```text
-site.json                        网站标题、简介、栏目、网址
+site.json                        网站标题、简介、网址
 templates/                       首页、文章页和公共 HTML 模板
 assets/                          样式、交互、图标及后续图片
 content/posts/                   每篇文章的 JSON 信息和 HTML 正文
+content/words.json               首页单词卡的六组内容
 scripts/build.py                 生成首页和所有已发布文章
 scripts/check.py                 验证本地链接、图片与锚点
 scripts/publish.py               生成、检查，可选提交与推送
@@ -47,7 +48,6 @@ python -m http.server 8000 --directory docs
   "slug": "my-new-note",
   "title": "文章标题",
   "date": "2026-10-09",
-  "category": "阅读理解",
   "summary": "文章的简短摘要。",
   "reading_minutes": 3,
   "draft": false,
@@ -64,13 +64,15 @@ python -m http.server 8000 --directory docs
 <blockquote><p lang="en">An English example.</p></blockquote>
 ```
 
-slug 与文件名必须一致。栏目必须来自 `site.json`。`draft: true` 的文章不会生成网页；`example: true` 的文章会标注“示例”。日期用于排序，不代表定时发布；未来日期的非草稿也会立即发布。正文为可信作者编写的 HTML，不接受不可信用户直接上传。
+slug 与文件名必须一致，无需填写分类。`draft: true` 的文章不会生成网页；`example: true` 的文章会标注“示例”。日期用于排序，不代表定时发布；未来日期的非草稿也会立即发布。正文为可信作者编写的 HTML，不接受不可信用户直接上传。
 
 图片放到 `assets/images/my-new-note/`；文章正文引用 `../../assets/images/my-new-note/example.jpg`。不要把私钥、密码、未公开材料放进这个仓库。GitHub 项目网站有 `/EnglishLearning/` 前缀，使用现有相对路径规则，不写 `/assets/...` 这样的根路径。
 
 生成程序自动更新首页列表、篇数和文章页。文章按照日期从新到旧显示。修改页面设计时编辑 `templates/` 或 `assets/`；不要直接修改 `docs/`，下次构建会重新生成它。
 
 ## 发布
+
+首页单词卡内容保存在 `content/words.json`。点击卡片、左右按钮或聚焦卡片后按左右方向键，可循环切换六个词；Enter / 空格也可翻到下一张。不会自动轮播；偏好减少动态效果的设备直接切换。每个词沿用同一个纸张模板，配有不同的窗景颜色、音标、释义与两行原创例句。六词参考[新东方四级高频词整理](https://cet4-6.xdf.cn/202607/15278999.html)选取，不表示官方频次排名。修改该文件后同样重新生成并提交网站。
 
 先同步仓库、编辑文章、预览确认，再运行：
 

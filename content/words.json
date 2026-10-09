@@ -1,0 +1,12 @@
+{
+  "selection_source": "https://cet4-6.xdf.cn/202607/15278999.html",
+  "note": "参考四级高频词整理选取六词；卡片例句与中文提示为本站原创，不表示官方频次排名。",
+  "cards": [
+    {"word": "improve", "phonetic": "/ɪmˈpruːv/", "meaning": "v. 改善；提高", "line_one": "A little practice.", "line_two": "A chance to ", "highlight": "improve.", "caption": "一点练习，一点进步。", "theme": "sage"},
+    {"word": "benefit", "phonetic": "/ˈbenɪfɪt/", "meaning": "v. 受益；n. 益处", "line_one": "Read a little.", "line_two": "Learn and ", "highlight": "benefit.", "caption": "每次阅读，都有一点收获。", "theme": "gold"},
+    {"word": "challenge", "phonetic": "/ˈtʃælɪndʒ/", "meaning": "n. 挑战；v. 向……挑战", "line_one": "One small step.", "line_two": "A new ", "highlight": "challenge.", "caption": "走出一小步，迎接新挑战。", "theme": "blue"},
+    {"word": "opportunity", "phonetic": "/ˌɒpəˈtjuːnəti/", "meaning": "n. 机会；时机", "line_one": "A new day.", "line_two": "A new ", "highlight": "opportunity.", "caption": "新的一天，也是新的机会。", "theme": "rose"},
+    {"word": "achieve", "phonetic": "/əˈtʃiːv/", "meaning": "v. 实现；达成", "line_one": "Set a small goal.", "line_two": "Then ", "highlight": "achieve it.", "caption": "从一个小目标，走向一次实现。", "theme": "olive"},
+    {"word": "develop", "phonetic": "/dɪˈveləp/", "meaning": "v. 发展；培养", "line_one": "Make time to read.", "line_two": "Let ideas ", "highlight": "develop.", "caption": "给阅读一点时间，让想法生长。", "theme": "lavender"}
+  ]
+}

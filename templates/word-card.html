@@ -1,0 +1,17 @@
+<div class="notebook-scene" role="group" aria-label="四级常用词翻页卡">
+  <span class="scene-label">WORDS OPEN WORLDS.</span>
+  <div class="paper-back" aria-hidden="true"></div>
+  <button class="notebook-paper word-card" id="word-card" type="button" data-theme="$theme" aria-busy="false" aria-label="翻到下一个单词；当前单词 $word" title="点击卡片，翻到下一页">
+    <span class="paper-heading"><span>CET-4 FIELD NOTES</span><span id="word-number">No. 001</span></span>
+    <span class="paper-rule"></span>
+    <span class="paper-word"><strong id="word-term" lang="en">$word</strong><span id="word-phonetic">$phonetic</span></span>
+    <span class="paper-meaning" id="word-meaning">$meaning</span>
+    <span class="paper-example" lang="en"><span class="example-line" id="word-line-one">$line_one</span><span class="example-line"><span id="word-line-two">$line_two</span><span class="word-highlight" id="word-highlight">$highlight</span></span></span>
+    <span class="window-art" aria-hidden="true"><span class="sun"></span><span class="hill hill-back"></span><span class="hill hill-front"></span><span class="window-frame"></span></span>
+    <span class="paper-bottom"><span id="word-caption">$caption</span><span aria-hidden="true">↗</span></span>
+  </button>
+  <span class="scene-caption">Small notes, bigger horizons.</span><span class="scene-spark" aria-hidden="true">✳</span>
+  <div class="word-controls"><button id="previous-word" class="word-arrow" type="button" aria-label="上一个单词">←</button><span class="word-progress" id="word-progress">01 / $word_count</span><span class="word-hint">点击卡片，翻到下一页</span><button id="next-word" class="word-arrow" type="button" aria-label="下一个单词">→</button></div>
+  <p id="word-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+</div>
+<script id="word-data" type="application/json">$word_data</script>

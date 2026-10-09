@@ -19,25 +19,32 @@
   </header>
   <main id="main"><section class="hero wrap" aria-labelledby="hero-title">
   <div class="hero-copy"><p class="eyebrow"><span class="tiny-dot"></span> A NOTEBOOK FOR YOUR ENGLISH JOURNEY</p><h1 id="hero-title">在英语里，<br>看见<span class="hero-emphasis">更大的世界。</span></h1><p class="hero-description">关于阅读、表达与学习方法的日常记录。把英语学进生活，也把想法说得更清楚。</p><a class="button" href="#articles">翻开学习札记 <span aria-hidden="true">↗</span></a><div class="hero-footnote"><span>READ</span><i></i><span>THINK</span><i></i><span>EXPRESS</span><small>让每一次学习，都留下痕迹。</small></div></div>
-  <div class="notebook-scene" aria-label="学习笔记：让语言成为通往世界的一扇窗" role="img">
-    <span class="scene-label">WORDS OPEN WORLDS.</span><div class="paper-back"></div><div class="notebook-paper"><div class="paper-heading"><span>FIELD NOTES</span><span>No. 001</span></div><div class="paper-rule"></div><p class="paper-word">perspective<span>/pəˈspektɪv/</span></p><p class="paper-meaning">n. 视角；看待事物的方式</p><div class="paper-example">A new language.<br>A new <span>perspective.</span></div><div class="window-art" aria-hidden="true"><div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="window-frame"></div></div><div class="paper-bottom"><span>换一种语言，也换一种视角。</span><span>↗</span></div></div><span class="scene-caption">Small notes, bigger horizons.</span><span class="scene-spark" aria-hidden="true">✳</span>
-  </div>
+  <div class="notebook-scene" role="group" aria-label="四级常用词翻页卡">
+  <span class="scene-label">WORDS OPEN WORLDS.</span>
+  <div class="paper-back" aria-hidden="true"></div>
+  <button class="notebook-paper word-card" id="word-card" type="button" data-theme="sage" aria-busy="false" aria-label="翻到下一个单词；当前单词 improve" title="点击卡片，翻到下一页">
+    <span class="paper-heading"><span>CET-4 FIELD NOTES</span><span id="word-number">No. 001</span></span>
+    <span class="paper-rule"></span>
+    <span class="paper-word"><strong id="word-term" lang="en">improve</strong><span id="word-phonetic">/ɪmˈpruːv/</span></span>
+    <span class="paper-meaning" id="word-meaning">v. 改善；提高</span>
+    <span class="paper-example" lang="en"><span class="example-line" id="word-line-one">A little practice.</span><span class="example-line"><span id="word-line-two">A chance to </span><span class="word-highlight" id="word-highlight">improve.</span></span></span>
+    <span class="window-art" aria-hidden="true"><span class="sun"></span><span class="hill hill-back"></span><span class="hill hill-front"></span><span class="window-frame"></span></span>
+    <span class="paper-bottom"><span id="word-caption">一点练习，一点进步。</span><span aria-hidden="true">↗</span></span>
+  </button>
+  <span class="scene-caption">Small notes, bigger horizons.</span><span class="scene-spark" aria-hidden="true">✳</span>
+  <div class="word-controls"><button id="previous-word" class="word-arrow" type="button" aria-label="上一个单词">←</button><span class="word-progress" id="word-progress">01 / 06</span><span class="word-hint">点击卡片，翻到下一页</span><button id="next-word" class="word-arrow" type="button" aria-label="下一个单词">→</button></div>
+  <p id="word-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+</div>
+<script id="word-data" type="application/json">[{"word": "improve", "phonetic": "/ɪmˈpruːv/", "meaning": "v. 改善；提高", "line_one": "A little practice.", "line_two": "A chance to ", "highlight": "improve.", "caption": "一点练习，一点进步。", "theme": "sage"}, {"word": "benefit", "phonetic": "/ˈbenɪfɪt/", "meaning": "v. 受益；n. 益处", "line_one": "Read a little.", "line_two": "Learn and ", "highlight": "benefit.", "caption": "每次阅读，都有一点收获。", "theme": "gold"}, {"word": "challenge", "phonetic": "/ˈtʃælɪndʒ/", "meaning": "n. 挑战；v. 向……挑战", "line_one": "One small step.", "line_two": "A new ", "highlight": "challenge.", "caption": "走出一小步，迎接新挑战。", "theme": "blue"}, {"word": "opportunity", "phonetic": "/ˌɒpəˈtjuːnəti/", "meaning": "n. 机会；时机", "line_one": "A new day.", "line_two": "A new ", "highlight": "opportunity.", "caption": "新的一天，也是新的机会。", "theme": "rose"}, {"word": "achieve", "phonetic": "/əˈtʃiːv/", "meaning": "v. 实现；达成", "line_one": "Set a small goal.", "line_two": "Then ", "highlight": "achieve it.", "caption": "从一个小目标，走向一次实现。", "theme": "olive"}, {"word": "develop", "phonetic": "/dɪˈveləp/", "meaning": "v. 发展；培养", "line_one": "Make time to read.", "line_two": "Let ideas ", "highlight": "develop.", "caption": "给阅读一点时间，让想法生长。", "theme": "lavender"}]</script>
+
 </section>
 <div class="manifesto wrap"><span class="manifesto-label">THE LEARNING JOURNAL</span><p>读懂一句话，<span>说清一个想法，</span>向前走一小步。</p><span class="manifesto-arrow" aria-hidden="true">↘</span></div>
-<section class="articles-section wrap" id="articles" aria-labelledby="articles-title"><div class="section-heading"><div><p class="eyebrow">NOTES & IDEAS</p><h2 id="articles-title">最近的学习札记<span class="article-count">3 篇</span></h2></div><p class="section-note">从一个问题开始，把理解慢慢写下来。</p></div>
-  <div class="article-tools"><div class="filters" role="group" aria-label="按栏目筛选"><button class="filter active" type="button" data-category="all" aria-pressed="true">全部札记</button><button class="filter" type="button" data-category="阅读理解" aria-pressed="false">阅读理解</button><button class="filter" type="button" data-category="写作表达" aria-pressed="false">写作表达</button><button class="filter" type="button" data-category="学习方法" aria-pressed="false">学习方法</button></div><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">搜索文章标题和摘要</span><input id="article-search" type="search" placeholder="找一篇札记…" autocomplete="off"></label></div>
-  <div class="article-grid" id="article-grid"><article class="article-card" data-category="阅读理解" data-search="读英文时，先抓住意思，再认识单词 遇到生词就停下来，容易忘记整段在说什么。试着先读完，再回头解决真正影响理解的词。 阅读理解">
+<section class="articles-section wrap" id="articles" aria-labelledby="articles-title"><div class="section-heading"><div><p class="eyebrow">NOTES & IDEAS</p><h2 id="articles-title">最近的学习札记<span class="article-count">1 篇</span></h2></div><p class="section-note">从一个问题开始，把理解慢慢写下来。</p></div>
+  <div class="article-tools"><span class="all-notes-label">全部札记</span><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">搜索文章标题和摘要</span><input id="article-search" type="search" placeholder="找一篇札记…" autocomplete="off"></label></div>
+  <div class="article-grid" id="article-grid"><article class="article-card" data-search="读英文时，先抓住意思，再认识单词 遇到生词就停下来，容易忘记整段在说什么。试着先读完，再回头解决真正影响理解的词。">
 <div class="card-art art-reading" aria-hidden="true"><span class="art-word">Read<span>.</span></span><span class="art-caption">BETWEEN THE LINES</span></div>
-<div class="card-body"><div class="card-meta"><span class="card-category">阅读理解<span class="sample-badge">示例</span></span><time datetime="2026-10-09">2026.10.09</time></div>
-<h3><a href="posts/read-for-meaning/">读英文时，先抓住意思，再认识单词</a></h3><p>遇到生词就停下来，容易忘记整段在说什么。试着先读完，再回头解决真正影响理解的词。</p><div class="card-footer"><span>3 分钟阅读</span><span aria-hidden="true">↗</span></div></div></article>
-<article class="article-card" data-category="写作表达" data-search="好的英文表达，从一句清楚的话开始 先写清楚想说什么，再考虑怎样说得更自然。简单的词，也可以组成有力量的句子。 写作表达">
-<div class="card-art art-writing" aria-hidden="true"><span class="art-word">Express<span>.</span></span><span class="art-caption">MAKE YOURSELF UNDERSTOOD</span></div>
-<div class="card-body"><div class="card-meta"><span class="card-category">写作表达<span class="sample-badge">示例</span></span><time datetime="2026-10-08">2026.10.08</time></div>
-<h3><a href="posts/write-with-clarity/">好的英文表达，从一句清楚的话开始</a></h3><p>先写清楚想说什么，再考虑怎样说得更自然。简单的词，也可以组成有力量的句子。</p><div class="card-footer"><span>3 分钟阅读</span><span aria-hidden="true">↗</span></div></div></article>
-<article class="article-card" data-category="学习方法" data-search="每天十分钟，给英语留一个位置 把计划缩小到可以开始：读一小段、记一句表达，再试着用一次。让积累成为日常的一部分。 学习方法">
-<div class="card-art art-method" aria-hidden="true"><span class="art-word">Grow<span>.</span></span><span class="art-caption">A LITTLE EVERY DAY</span></div>
-<div class="card-body"><div class="card-meta"><span class="card-category">学习方法<span class="sample-badge">示例</span></span><time datetime="2026-10-07">2026.10.07</time></div>
-<h3><a href="posts/small-daily-practice/">每天十分钟，给英语留一个位置</a></h3><p>把计划缩小到可以开始：读一小段、记一句表达，再试着用一次。让积累成为日常的一部分。</p><div class="card-footer"><span>2 分钟阅读</span><span aria-hidden="true">↗</span></div></div></article></div><p id="empty-results" class="empty-results" hidden>没有找到相关札记，换个关键词试试。</p><p class="sample-notice">标注“示例”的札记用于展示内容与排版，后续可替换为正式文章。</p>
+<div class="card-body"><div class="card-meta"><span class="card-label">学习札记<span class="sample-badge">示例</span></span><time datetime="2026-10-09">2026.10.09</time></div>
+<h3><a href="posts/read-for-meaning/">读英文时，先抓住意思，再认识单词</a></h3><p>遇到生词就停下来，容易忘记整段在说什么。试着先读完，再回头解决真正影响理解的词。</p><div class="card-footer"><span>3 分钟阅读</span><span aria-hidden="true">↗</span></div></div></article></div><p id="empty-results" class="empty-results" hidden>没有找到相关札记，换个关键词试试。</p><p class="sample-notice">标注“示例”的札记用于展示内容与排版，后续可替换为正式文章。</p>
 </section>
 <section class="about-panel wrap" id="about" aria-labelledby="about-title"><div class="about-intro"><p class="eyebrow">A LITTLE ABOUT THIS SPACE</p><h2 id="about-title">学习不必宏大，<br>但可以<span>持续发生。</span></h2></div><div class="about-copy"><p>这里收集英语学习中的阅读发现、表达练习和方法思考。没有复杂的规则，只希望每一篇札记，都能带来一个可以试一试的小启发。</p><a href="#articles">从一篇札记开始 <span aria-hidden="true">↗</span></a></div><span class="about-decoration" aria-hidden="true">a<span>→</span>A</span></section>
 </main>
